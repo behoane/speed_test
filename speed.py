@@ -1,19 +1,19 @@
 import speedtest
 
 test = speedtest.Speedtest()
-print("Đang tải danh sách máy chủ...")
+print("Loading server list...")
 test.get_servers()
-print("Chọn máy chủ tốt nhất ...")
+print("Choose the best server ...")
 best = test.get_best_server()
 vitri = best['country'].replace('Vietnam', 'Việt Nam')
-print(f"Máy chủ: {best['host']} vị trí {vitri}")
+print(f"Found: {best['host']} located in {vitri}")
 
-print("Thực hiện kiểm tra tải xuống...")
+print("Performance download test...")
 download_result = test.download()
-print("Thực hiện kiểm tra tải lên...")
+print("Performance upload test...")
 upload_result = test.upload()
 ping_result = test.results.ping
 
-print(f"Tốc độ tải về: {download_result / 1024 / 1024:.2f} Mbit/s")
-print(f"Tốc độ tải về: {upload_result / 1024 / 1024:.2f} Mbit/s")
+print(f"Download speed: {download_result / 1024 / 1024:.2f} Mbit/s")
+print(f"Upload speed: {upload_result / 1024 / 1024:.2f} Mbit/s")
 print(f"Ping: {ping_result:.2f} ms")
